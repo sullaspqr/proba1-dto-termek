@@ -29,8 +29,7 @@ builder.Services.AddCors(options =>
             policy
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials();
+                .AllowAnyMethod();
         });
 });
 var app = builder.Build();
@@ -48,6 +47,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 
 
 
