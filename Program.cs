@@ -21,6 +21,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)
     )
 );
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials() // Ha küldesz cookie-t vagy authot
+                .WithOrigins("http://localhost:3000"); // IDE A TE FRONTEND URL-JÉT!!!
+        });
+});
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,10 +42,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowFrontend"); 
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
 
