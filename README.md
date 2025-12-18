@@ -1,6 +1,6 @@
 # This ASP.NET WEB API backend only for educational purposes!
 # Known issues:
- - ConnectionStrings removed from appsettings.json for security reasons!
+ - ConnectionStrings removed from appsettings.json for security reasons! XD
 # For local dev: 
 - appsettings.json:
 {
